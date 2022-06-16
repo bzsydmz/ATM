@@ -1,4 +1,3 @@
-
 #include "ATM.h"
 
 void ATM::moveCursor(SHORT x, SHORT y) {
@@ -22,10 +21,10 @@ void ATM::shape() {
 	cout << "++--------------------------------------++" << endl;
 	cout << "|                                        |" << endl;
 	cout << "|   [1][2][3]              =====         |" << endl;
-	cout << "|   [4][5][6]              ²å¿¨¿Ú        |" << endl;
+	cout << "|   [4][5][6]              æ’å¡å£        |" << endl;
 	cout << "|   [7][8][9]             ________       |" << endl;
-	cout << "|   [0][È·¶¨]            [________]      |" << endl;
-	cout << "|                         ´æÈ¡¿î¿Ú       |" << endl;
+	cout << "|   [0][ç¡®å®š]            [________]      |" << endl;
+	cout << "|                         å­˜å–æ¬¾å£       |" << endl;
 	cout << "+----------------------------------------+" << endl;
 }
 string* ATM::readFile() {
@@ -34,7 +33,7 @@ string* ATM::readFile() {
 	if (!fin.is_open()) {
 		shape();
 		moveCursor(3, 3);
-		cout << "ÏµÍ³´íÎó£¡ÇëÁªÏµ¹¤×÷ÈËÔ±Ñ°Çó°ïÖú¡£" << endl;
+		cout << "ç³»ç»Ÿé”™è¯¯ï¼è¯·è”ç³»å·¥ä½œäººå‘˜å¯»æ±‚å¸®åŠ©ã€‚" << endl;
 		moveCursor(0, 20);
 		exit(0);
 	}
@@ -78,7 +77,7 @@ void ATM::writeFile(User x) {
 void ATM::loading() {
 	shape();
 	moveCursor(3, 5);
-	cout << "´¦ÀíÖÐ";
+	cout << "å¤„ç†ä¸­";
 	for (int i = 0; i < 4; i++) {
 		cout << ".";
 		Sleep(300);
@@ -89,9 +88,9 @@ void ATM::loading() {
 void ATM::lockcard() {
 	shape();
 	moveCursor(3, 2);
-	cout << "Á¬ÐøÈý´ÎÊäÈë´íÎó" << endl;
-	cout << "|| ÄúµÄÕË»§ÒÑ±»Ëø¶¨" << endl;
-	cout << "|| ÇëÁªÏµ¹¤×÷ÈËÔ±Ñ°Çó°ïÖú" << endl;
+	cout << "è¿žç»­ä¸‰æ¬¡è¾“å…¥é”™è¯¯" << endl;
+	cout << "|| æ‚¨çš„è´¦æˆ·å·²è¢«é”å®š" << endl;
+	cout << "|| è¯·è”ç³»å·¥ä½œäººå‘˜å¯»æ±‚å¸®åŠ©" << endl;
 	moveCursor(0, 20);
 	exit(0);
 }
@@ -121,7 +120,7 @@ void ATM::inputNumber(string& s, int x, int y) {
 			break;
 		if (i >= 1) {
 			moveCursor(x, y + 4);
-			cout << "°´Enter¼üÈ·¶¨";
+			cout << "æŒ‰Enteré”®ç¡®å®š";
 		}
 		else {
 			moveCursor(x, y + 4);
@@ -159,7 +158,7 @@ void ATM::inputPassword(string& s, int x, int y) {
 			break;
 		if (i == 6) {
 			moveCursor(x, y + 4);
-			cout << "°´Enter¼üÈ·¶¨" << endl;
+			cout << "æŒ‰Enteré”®ç¡®å®š" << endl;
 		}
 	}
 }
@@ -195,25 +194,25 @@ void ATM::createAccount() {
 void ATM::beginPage() {
 	shape();
 	moveCursor(3, 2);
-	cout << "»¶Ó­Ê¹ÓÃCQUÒøÐÐATM×ÔÖú·þÎñ!";
+	cout << "æ¬¢è¿Žä½¿ç”¨CQUé“¶è¡ŒATMè‡ªåŠ©æœåŠ¡!";
 	moveCursor(3, 6);
-	cout << "Çë²åÈëÒøÐÐ¿¨";
+	cout << "è¯·æ’å…¥é“¶è¡Œå¡";
 	moveCursor(3, 7);
-	cout << "£¨°´Enter¼ü£©";
+	cout << "ï¼ˆæŒ‰Enteré”®ï¼‰";
 	while (_getch() != '\r');
 }
 User ATM::verify(string& account, string& password) {
-	int times = 0; //ÊäÈë´ÎÊý
+	int times = 0; //è¾“å…¥æ¬¡æ•°
 	while (times < 3) {
 		shape();
 		account = "";
 		password = "";
 		moveCursor(3, 2);
-		cout << "ÇëÊäÈëÕËºÅ£º" << endl;
+		cout << "è¯·è¾“å…¥è´¦å·ï¼š" << endl;
 		inputNumber(account, 3, 5);
 		shape();
 		moveCursor(3, 2);
-		cout << "ÇëÊäÈëÃÜÂë£º" << endl;
+		cout << "è¯·è¾“å…¥å¯†ç ï¼š" << endl;
 		inputPassword(password, 3, 5);
 		string* users = readFile();
 		for (int i = 0; i < 4; i++) {
@@ -228,7 +227,7 @@ User ATM::verify(string& account, string& password) {
 		}
 		shape();
 		moveCursor(3, 4);
-		cout << "ÕËºÅ»òÃÜÂë´íÎó£¡";
+		cout << "è´¦å·æˆ–å¯†ç é”™è¯¯ï¼";
 		Sleep(1600);
 		times++;
 	}
@@ -238,14 +237,14 @@ void ATM::homePage(User& x) {
 	while (1) {
 		shape();
 		moveCursor(15, 1);
-		cout << "ATM×ÔÖú·þÎñ";
+		cout << "ATMè‡ªåŠ©æœåŠ¡";
 		moveCursor(0, 5);
-		cout << "|| 1 - ²éÑ¯Óà¶î";
-		cout << "                È¡¿î - 2" << endl << endl;
-		cout << "|| 3 - ´æ¿î";
-		cout << "                ÐÞ¸ÄÃÜÂë - 4" << endl << endl;
-		cout << "|| 5 - ×ªÕË";
-		cout << "                    ÍË¿¨ - 6" << endl << endl;
+		cout << "|| 1 - æŸ¥è¯¢ä½™é¢";
+		cout << "                å–æ¬¾ - 2" << endl << endl;
+		cout << "|| 3 - å­˜æ¬¾";
+		cout << "                ä¿®æ”¹å¯†ç  - 4" << endl << endl;
+		cout << "|| 5 - è½¬è´¦";
+		cout << "                    é€€å¡ - 6" << endl << endl;
 		switch (_getch() - '0') {
 		case 1:inquiry(x); break;
 		case 2:withdraw(x); break;
@@ -259,11 +258,11 @@ void ATM::homePage(User& x) {
 void ATM::inquiry(User x) {
 	loading();
 	moveCursor(3, 1);
-	cout << "Óà¶î£º";
+	cout << "ä½™é¢ï¼š";
 	moveCursor(7, 3);
-	cout << numFarmat(x.getBalance()) << " Ôª\n\n\n\n";
-	cout << "|| 1 - ·µ»ØÖ÷²Ëµ¥" << endl << endl;
-	cout << "|| 0 - ÍË¿¨" << endl;
+	cout << numFarmat(x.getBalance()) << " å…ƒ\n\n\n\n";
+	cout << "|| 1 - è¿”å›žä¸»èœå•" << endl << endl;
+	cout << "|| 0 - é€€å¡" << endl;
 	while (1) {
 		int i = _getch();
 		if (i == '1')
@@ -275,24 +274,24 @@ void ATM::inquiry(User x) {
 void ATM::withdraw(User& x) {
 	shape();
 	moveCursor(3, 2);
-	cout << "ÊäÈëÄúÒªÈ¡¿îµÄ½ð¶î£º" << endl << endl;
-	cout << "|| 1 - 100Ôª";
-	cout << "                  200Ôª - 2" << endl << endl;
-	cout << "|| 3 - 500Ôª";
-	cout << "                 1000Ôª - 4" << endl << endl;
-	cout << "|| 5 - ÆäËû½ð¶î";
-	cout << "          ·µ»ØÖ÷½çÃæ - 6" << endl << endl;
+	cout << "è¾“å…¥æ‚¨è¦å–æ¬¾çš„é‡‘é¢ï¼š" << endl << endl;
+	cout << "|| 1 - 100å…ƒ";
+	cout << "                  200å…ƒ - 2" << endl << endl;
+	cout << "|| 3 - 500å…ƒ";
+	cout << "                 1000å…ƒ - 4" << endl << endl;
+	cout << "|| 5 - å…¶ä»–é‡‘é¢";
+	cout << "          è¿”å›žä¸»ç•Œé¢ - 6" << endl << endl;
 	while (1) {
 		int t = _getch();
 		int take[] = { 100,200,500,1000 };
 		if (t >= '1' && t <= '4') {
 			if (take[t - '1'] > x.getBalance()) {
-				cout << "\n|| Óà¶î²»×ã             ";
+				cout << "\n|| ä½™é¢ä¸è¶³             ";
 				Sleep(1400);
 				break;
 			}
 			else if (take[t - '1'] + x.getWithdrawn() > 20000) {
-				cout << "\n|| µ¥ÈÕ×î¸ßÈ¡¿î£¨º¬×ªÕË£©ÏÞ¶î20,000Ôª";
+				cout << "\n|| å•æ—¥æœ€é«˜å–æ¬¾ï¼ˆå«è½¬è´¦ï¼‰é™é¢20,000å…ƒ";
 				Sleep(1400);
 				break;
 			}
@@ -300,32 +299,32 @@ void ATM::withdraw(User& x) {
 			x.addBalance(-take[t - '1']);
 			x.addWithdrawn(take[t - '1']);
 			moveCursor(3, 3);
-			cout << "ÇëÈ¡×ßÄúµÄÏÖ½ð";
+			cout << "è¯·å–èµ°æ‚¨çš„çŽ°é‡‘";
 			Sleep(1400);
 			break;
 		}
 		else if (t == '5') {
 			shape();
 			moveCursor(3, 2);
-			cout << "ÊäÈëÄúÒªÈ¡¿îµÄ½ð¶î£º";
+			cout << "è¾“å…¥æ‚¨è¦å–æ¬¾çš„é‡‘é¢ï¼š";
 			string out_money;
 			inputNumber(out_money, 3, 3);
 			if (out_money.size() > 4)
-				cout << "\n|| µ¥´ÎÈ¡¿î½ð¶î²»ÄÜ³¬¹ý3,000Ôª";
+				cout << "\n|| å•æ¬¡å–æ¬¾é‡‘é¢ä¸èƒ½è¶…è¿‡3,000å…ƒ";
 			else {
 				int money = stoi(out_money);
 				if (money > 3000)
-					cout << "\n|| µ¥´ÎÈ¡¿î½ð¶î²»ÄÜ³¬¹ý3,000Ôª";
+					cout << "\n|| å•æ¬¡å–æ¬¾é‡‘é¢ä¸èƒ½è¶…è¿‡3,000å…ƒ";
 				else if (money > x.getBalance())
-					cout << "\n|| Óà¶î²»×ã           ";
+					cout << "\n|| ä½™é¢ä¸è¶³           ";
 				else if (money + x.getWithdrawn() > 20000)
-					cout << "\n|| µ¥ÈÕ×î¸ßÈ¡¿î£¨º¬×ªÕË£©ÏÞ¶î20,000Ôª";
+					cout << "\n|| å•æ—¥æœ€é«˜å–æ¬¾ï¼ˆå«è½¬è´¦ï¼‰é™é¢20,000å…ƒ";
 				else if (money % 100 != 0)
-					cout << "\n|| Ö»ÄÜÈ¡¿î100ÕûÊý±¶µÄ½ð¶î";
+					cout << "\n|| åªèƒ½å–æ¬¾100æ•´æ•°å€çš„é‡‘é¢";
 				else {
 					loading();
 					moveCursor(3, 3);
-					cout << "ÇëÈ¡×ßÄúµÄÏÖ½ð";
+					cout << "è¯·å–èµ°æ‚¨çš„çŽ°é‡‘";
 					x.addBalance(-money);
 					x.addWithdrawn(money);
 				}
@@ -342,27 +341,27 @@ void ATM::deposit(User& x) {
 	shape();
 	string in_money;
 	moveCursor(3, 3);
-	cout << "Çë·ÅÈëÏÖ½ð²¢ÊäÈë´æÈëµÄ½ð¶î";
+	cout << "è¯·æ”¾å…¥çŽ°é‡‘å¹¶è¾“å…¥å­˜å…¥çš„é‡‘é¢";
 	inputNumber(in_money, 3, 5);
 	if (in_money.size() > 5)
-		cout << "\n|| µ¥´Î×î¶à´æÈë100ÕÅ³®Æ±";
+		cout << "\n|| å•æ¬¡æœ€å¤šå­˜å…¥100å¼ é’žç¥¨";
 	else {
 		int money = stoi(in_money);
 		if (money > 10000)
-			cout << "\n|| µ¥´Î×î¶à´æÈë100ÕÅ³®Æ±";
+			cout << "\n|| å•æ¬¡æœ€å¤šå­˜å…¥100å¼ é’žç¥¨";
 		else if (money && money % 100 != 0)
-			cout << "\n|| Ö»ÄÜ´æÈë100ÔªÃæ¶îµÄ³®Æ±";
+			cout << "\n|| åªèƒ½å­˜å…¥100å…ƒé¢é¢çš„é’žç¥¨";
 		else if (money + x.getDeposited() > 50000)
-			cout << "\n|| µ¥ÈÕ´æ¿îÏÞ¶î50,000Ôª";
+			cout << "\n|| å•æ—¥å­˜æ¬¾é™é¢50,000å…ƒ";
 		else if (money == 0)
-			cout << "\n|| ÇëÊäÈëÓÐÐ§½ð¶î";
+			cout << "\n|| è¯·è¾“å…¥æœ‰æ•ˆé‡‘é¢";
 		else {
 			loading();
 			x.addBalance(money);
 			x.addDeposited(money);
 			shape();
 			moveCursor(3, 3);
-			cout << "´æ¿î³É¹¦";
+			cout << "å­˜æ¬¾æˆåŠŸ";
 			writeFile(x);
 		}
 	}
@@ -379,22 +378,22 @@ void ATM::changePassword(User& x) {
 	shape();
 	string input1, input2;
 	moveCursor(3, 2);
-	cout << "ÇëÊäÈëÔ­ÃÜÂë£º" << endl;
+	cout << "è¯·è¾“å…¥åŽŸå¯†ç ï¼š" << endl;
 	inputPassword(input1, 3, 4);
 	if (input1 == x.getPassword()) {
 		shape();
 		moveCursor(3, 2);
-		cout << "ÇëÊäÈëÐÂÃÜÂë£º" << endl;
+		cout << "è¯·è¾“å…¥æ–°å¯†ç ï¼š" << endl;
 		input1 = "";
 		inputPassword(input1, 3, 4);
 		if (input1 == x.getPassword()) {
-			cout << "\n|| ÐÂÃÜÂë²»ÄÜÓëÔ­ÃÜÂëÏàÍ¬!" << endl;
+			cout << "\n|| æ–°å¯†ç ä¸èƒ½ä¸ŽåŽŸå¯†ç ç›¸åŒ!" << endl;
 			Sleep(1400);
 		}
 		else {
 			shape();
 			moveCursor(3, 2);
-			cout << "ÇëÔÙ´ÎÊäÈë£º" << endl;
+			cout << "è¯·å†æ¬¡è¾“å…¥ï¼š" << endl;
 			input2 = "";
 			inputPassword(input2, 3, 4);
 			if (input1 == input2) {
@@ -402,17 +401,17 @@ void ATM::changePassword(User& x) {
 				writeFile(x);
 				shape();
 				moveCursor(3, 3);
-				cout << "ÐÞ¸Ä³É¹¦£¬ÇëÀÎ¼ÇÄúµÄÒøÐÐ¿¨ÃÜÂë";
+				cout << "ä¿®æ”¹æˆåŠŸï¼Œè¯·ç‰¢è®°æ‚¨çš„é“¶è¡Œå¡å¯†ç ";
 				Sleep(1600);
 			}
 			else {
-				cout << "\n|| Á½´ÎÊäÈëÃÜÂë²»Ò»ÖÂ£¡";
+				cout << "\n|| ä¸¤æ¬¡è¾“å…¥å¯†ç ä¸ä¸€è‡´ï¼";
 				Sleep(1500);
 			}
 		}
 	}
 	else {
-		cout << "\n|| ÃÜÂë´íÎó£¡   " << endl;
+		cout << "\n|| å¯†ç é”™è¯¯ï¼   " << endl;
 		Sleep(1500);
 	}
 }
@@ -420,12 +419,12 @@ void ATM::transfer(User& x) {
 	shape();
 	string to_account;
 	moveCursor(3, 2);
-	cout << "ÇëÊäÈë×ªÈëÕßÕËºÅ£º";
+	cout << "è¯·è¾“å…¥è½¬å…¥è€…è´¦å·ï¼š";
 	inputNumber(to_account, 3, 4);
-	if (to_account == x.getAccount()) {//±ÜÃâ¸ø×Ô¼º×ªÕËµÄÇé¿ö
+	if (to_account == x.getAccount()) {//é¿å…ç»™è‡ªå·±è½¬è´¦çš„æƒ…å†µ
 		shape(); 
 		moveCursor(3, 3);
-		cout << "ÎÞ·¨Ïò¸ÃÕË»§×ªÕË£¬ÇëºË¶ÔÕË»§ÐÅÏ¢";
+		cout << "æ— æ³•å‘è¯¥è´¦æˆ·è½¬è´¦ï¼Œè¯·æ ¸å¯¹è´¦æˆ·ä¿¡æ¯";
 		Sleep(1700);
 		return;
 	}
@@ -444,27 +443,27 @@ void ATM::transfer(User& x) {
 	if (found) {
 		shape();
 		moveCursor(3, 3);
-		cout << "ÇëÊäÈë×ªÕË½ð¶î£º";
+		cout << "è¯·è¾“å…¥è½¬è´¦é‡‘é¢ï¼š";
 		string to_money;
 		inputNumber(to_money, 3, 5);
 		shape();
 		moveCursor(3, 3);
 		if (to_money.size() > 5)
-			cout << "µ¥´Î×ªÕË½ð¶î²»ÄÜ³¬¹ý20000Ôª";
+			cout << "å•æ¬¡è½¬è´¦é‡‘é¢ä¸èƒ½è¶…è¿‡20000å…ƒ";
 		else {
 			int money = stoi(to_money);
 			if (money > 20000)
-				cout << "µ¥´Î×ªÕË½ð¶î²»ÄÜ³¬¹ý20000Ôª";
+				cout << "å•æ¬¡è½¬è´¦é‡‘é¢ä¸èƒ½è¶…è¿‡20000å…ƒ";
 			else if (money > x.getBalance())
-				cout << "Óà¶î²»×ã";
+				cout << "ä½™é¢ä¸è¶³";
 			else if (money + x.getWithdrawn() > 20000)
-				cout << "µ¥ÈÕ×î¸ßÈ¡¿î£¨º¬×ªÕË£©ÏÞ¶î20,000Ôª";
+				cout << "å•æ—¥æœ€é«˜å–æ¬¾ï¼ˆå«è½¬è´¦ï¼‰é™é¢20,000å…ƒ";
 			else if (money % 100 != 0)
-				cout << "Ö»ÄÜ×ªÕË100ÕûÊý±¶µÄ½ð¶î";
+				cout << "åªèƒ½è½¬è´¦100æ•´æ•°å€çš„é‡‘é¢";
 			else {
 				loading();
 				moveCursor(3, 3);
-				cout << "×ªÕË³É¹¦£¡";
+				cout << "è½¬è´¦æˆåŠŸï¼";
 				x.addBalance(-money);
 				x.addWithdrawn(money);
 				to->addBalance(money);
@@ -478,13 +477,13 @@ void ATM::transfer(User& x) {
 	}
 	shape();
 	moveCursor(3, 3);
-	cout << "ÎÞ·¨Ïò¸ÃÕË»§×ªÕË£¬ÇëºË¶ÔÕË»§ÐÅÏ¢";
+	cout << "æ— æ³•å‘è¯¥è´¦æˆ·è½¬è´¦ï¼Œè¯·æ ¸å¯¹è´¦æˆ·ä¿¡æ¯";
 	Sleep(1700);
 }
 void ATM::exitCard() {
 	shape();
 	moveCursor(3, 3);
-	cout << "ÇëÊÕºÃÄúµÄÒøÐÐ¿¨";
+	cout << "è¯·æ”¶å¥½æ‚¨çš„é“¶è¡Œå¡";
 	moveCursor(0, 20);
 	exit(0);
 }
