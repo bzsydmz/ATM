@@ -1,4 +1,3 @@
-
 #include "ATM.h"
 
 int main() {
