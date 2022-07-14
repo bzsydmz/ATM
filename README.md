@@ -1,7 +1,7 @@
 # ATM
 ATM模拟
 
-（大一上学期期末的project作业）
+大一上学期C++期末project作业
 
 1.需求分析
 
